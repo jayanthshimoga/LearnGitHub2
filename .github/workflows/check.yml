@@ -1,19 +1,35 @@
 name: TestWorkflow-001
 on: push
 jobs:
-    Setting-Environment:
+    
+    Initialising:
         runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                node-version: [14.x, 16.x, 18.x]
+        # strategy:
+        #     matrix:
+        #         node-version: [14.x, 16.x, 18.x]
         steps:
             - name: Code Checkout
               uses: actions/checkout@v3
             - name: Install NodeJS
               uses: actions/setup-node@v3
               with:
-                node-version: ${{ matrix.node-version }}
+                node-version: 18.x
             - name: Install Dependencies
               run: npm ci
             - name: Run some Tests
               run: npm test
+    Deploying:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Code Checkout
+              uses: actions/checkout@v3
+            - name: Install NodeJS
+              uses: actions/setup-node@v3
+              with:
+                node-version: 18.x
+            - name: Install Dependencies
+              run: npm ci
+            - name: Build Code
+              run: npm run build
+            - name: Deploy
+              run: echo 'Deploying'
