@@ -1,4 +1,4 @@
-name: TestWorkflow-001
+name: Test Workflow for NodeJS code
 on: push
 jobs:
     Setting-Environment:
