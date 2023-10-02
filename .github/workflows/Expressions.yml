@@ -1,0 +1,8 @@
+name: Expressions and Context
+on: workflow_dispatch
+jobs:
+    PrintContext:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print Context Through Expression
+              run: echo "${{ toJSON(github) }}"
